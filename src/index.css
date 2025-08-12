@@ -9,6 +9,7 @@ FONT SIZE SYSTEM (px)
 :root {
   --Blue-200: hsl(193, 38%, 86%);
   --Green-300: hsl(150, 100%, 66%);
+  --Green-300-light: hsla(150, 100%, 66%, 0.35);
   --Blue-600: hsl(217, 19%, 38%);
   --Blue-900: hsl(217, 19%, 24%);
   --Blue-950: hsl(218, 23%, 16%);
@@ -81,8 +82,13 @@ body {
   transform: translate(-50%, 50%);
   cursor: pointer;
   border: none;
+  transition: box-shadow 0.3s;
 
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.new-advice:hover {
+  box-shadow: 0 0px 15px 7px var(--Green-300-light);
 }

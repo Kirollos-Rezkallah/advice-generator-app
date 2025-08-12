@@ -74,6 +74,14 @@ body {
   margin-bottom: 2.4rem;
 }
 
+.border--desktop {
+  display: none;
+}
+
+.border--mobile {
+  display: block;
+}
+
 .new-advice {
   background-color: var(--Green-300);
   color: var(--Blue-950);
@@ -117,5 +125,77 @@ body {
   }
   .new-advice:hover {
     box-shadow: none;
+  }
+}
+
+@media (min-width: 30em) {
+  .advice {
+    font-size: 2.4rem;
+  }
+  .new-advice {
+    padding: 1.4rem;
+  }
+}
+
+/* ≥ 768px (tablets) */
+@media (min-width: 48em) {
+  .container {
+    padding: 3.2rem;
+    gap: 3rem;
+  }
+  .advice {
+    font-size: 2.8rem;
+  }
+  .new-advice {
+    padding: 1.6rem;
+  }
+  .border--desktop {
+    display: block;
+  }
+  .border--mobile {
+    display: none;
+  }
+}
+
+/* ≥ 1024px (laptops/desktops) */
+@media (min-width: 64em) {
+  .container {
+    gap: 3.2rem;
+  }
+  .advice {
+    font-size: 3.2rem;
+  }
+}
+
+@keyframes adviceIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.advice-animate {
+  animation: adviceIn 260ms ease-out both;
+}
+
+.new-advice:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 4px var(--Blue-900), 0 0 0 8px var(--Green-300);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .new-advice {
+    transition: none;
+  }
+  .new-advice:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .advice-animate {
+    animation: none;
   }
 }

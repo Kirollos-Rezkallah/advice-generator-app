@@ -20,8 +20,6 @@ function App() {
         signal: controller.signal,
       });
 
-      clearTimeout(timeoutId);
-
       if (!res.ok) throw new Error("Something went wrong with fetching advice");
 
       const data = await res.json();
@@ -47,20 +45,35 @@ function App() {
         {!error && isLoading && <Loading />}
         {!error && !isLoading && (
           <>
+            <p className="advice-number">{`advice #${id}`}</p>
             <p
-              className="advice-number"
-              aria-live="polite">{`advice #${id}`}</p>
-            <p className="advice">{`“${advice}”`}</p>
+              className="advice advice-animate"
+              key={id}
+              aria-live="polite">{`“${advice}”`}</p>
           </>
         )}
         <svg
-          className="border"
+          className="border border--desktop"
           width="444"
           height="16"
           xmlns="http://www.w3.org/2000/svg">
           <g fill="none" fillRule="evenodd">
             <path fill="#4F5D74" d="M0 8h196v1H0zM248 8h196v1H248z" />
             <g transform="translate(212)" fill="#CEE3E9">
+              <rect width="6" height="16" rx="3" />
+              <rect x="14" width="6" height="16" rx="3" />
+            </g>
+          </g>
+        </svg>
+
+        <svg
+          className="border border--mobile"
+          width="295"
+          height="16"
+          xmlns="http://www.w3.org/2000/svg">
+          <g fill="none" fillRule="evenodd">
+            <path fill="#4F5D74" d="M0 8h122v1H0zM173 8h122v1H173z" />
+            <g transform="translate(138)" fill="#CEE3E9">
               <rect width="6" height="16" rx="3" />
               <rect x="14" width="6" height="16" rx="3" />
             </g>

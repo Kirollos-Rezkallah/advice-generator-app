@@ -30,7 +30,8 @@ body {
   font-family: "Manrope", sans-serif;
   background-color: var(--Blue-950);
   color: var(--Blue-200);
-  height: 680px;
+  min-height: 100dvh;
+  width: 100%;
 
   display: flex;
   justify-content: center;
@@ -42,7 +43,8 @@ body {
 }
 
 .container {
-  width: 50rem;
+  max-width: 50rem;
+  width: min(90vw, 50rem);
   background-color: var(--Blue-900);
   border-radius: 1rem;
   padding: 3.2rem;
@@ -74,6 +76,7 @@ body {
 
 .new-advice {
   background-color: var(--Green-300);
+  color: var(--Blue-950);
   padding: 1.6rem;
   border-radius: 50%;
   position: absolute;
@@ -82,7 +85,7 @@ body {
   transform: translate(-50%, 50%);
   cursor: pointer;
   border: none;
-  transition: box-shadow 0.3s;
+  transition: box-shadow 0.25s;
 
   display: flex;
   align-items: center;
@@ -91,4 +94,28 @@ body {
 
 .new-advice:hover {
   box-shadow: 0 0px 15px 7px var(--Green-300-light);
+}
+
+.new-advice:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 4px var(--Blue-900), 0 0 0 8px var(--Green-300);
+}
+
+.new-advice:disabled {
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.new-advice svg {
+  fill: currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .new-advice {
+    transition: none;
+  }
+  .new-advice:hover {
+    box-shadow: none;
+  }
 }
